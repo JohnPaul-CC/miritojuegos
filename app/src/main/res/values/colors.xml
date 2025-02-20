@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="riotRed">#EA0029</color>
+    <!--    <color name="m3_comp_button_filled_icon_color" tools:ignore="PrivateResource">#4CAF50</color>-->
+    <color name="m3_filled_icon_button_container_color_selector" tools:ignore="PrivateResource">#E90029</color>
 </resources>

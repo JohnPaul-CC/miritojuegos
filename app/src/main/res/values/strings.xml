@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">AppJohn</string>
+    <string name="app_name">logIn</string>
+    <string name="user">Usuario</string>
+    <string name="psw">Contraseña</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="newUser">No tienes cuenta?</string>
+    <string name="forgot">Olvidaste la contraseña?</string>
+    <string name="signup">Registrate</string>
+    <string name="email">Correo Electrónico</string>
+    <string name="date">Día/Mes/Año</string>
+    <string name="or">O inicia con:</string>
 </resources>

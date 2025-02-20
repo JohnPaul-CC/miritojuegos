@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">logIn</string>
+    <string name="user">User</string>
+    <string name="psw">Password</string>
+    <string name="login">Log In</string>
+    <string name="newUser">Don\'t have an account</string>
+    <string name="forgot">Forgot the password?</string>
+    <string name="signup">Sign Up</string>
+    <string name="or">Or log in with:</string>
+    <string name="email">Email</string>
+    <string name="date">Day/Month/Year</string>
+</resources>
