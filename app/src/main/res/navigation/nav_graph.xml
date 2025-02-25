@@ -19,7 +19,7 @@
 
 
         <action
-            android:id="@+id/action_loginFragment_to_registroFragment"
+            android:id="@+id/login_to_register"
             app:destination="@id/RegisterFragment" />
 
 
@@ -32,7 +32,7 @@
         android:label="Second Fragment"
         tools:layout="@layout/fragment_register">
         <action
-            android:id="@+id/action_firstFragment_to_secondFragment"
+            android:id="@+id/register_to_login"
             app:destination="@id/LoginFragment" />
 
     </fragment>

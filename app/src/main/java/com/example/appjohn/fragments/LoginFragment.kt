@@ -71,7 +71,7 @@ class LoginFragment : Fragment() {
 
         binding.textButton.setOnClickListener {
             // Navegar al RegistroFragment usando Navigation Component
-            findNavController().navigate(R.id.action_loginFragment_to_registroFragment)
+            findNavController().navigate(R.id.login_to_register)
         }
 
         binding.iconButton2.setOnClickListener {
@@ -88,7 +88,7 @@ class LoginFragment : Fragment() {
 
         binding.iconButton.setOnClickListener {
             // Navegar a otro fragmento en lugar de usar Intent
-            findNavController().navigate(R.id.action_loginFragment_to_registroFragment)
+            findNavController().navigate(R.id.login_to_register)
         }
 
         binding.forgotButton.setOnClickListener {
