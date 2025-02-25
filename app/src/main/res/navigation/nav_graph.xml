@@ -4,37 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph">
 
-    <activity
-        android:id="@+id/mainActivity"
-        android:name="com.example.appjohn.MainActivity"
-        android:label="activity_main"
-        tools:layout="@layout/activity_main" />
-
-
     <fragment
-        android:id="@+id/LoginFragment"
+        android:id="@+id/loginFragment"
         android:name="com.example.appjohn.fragments.LoginFragment"
-        android:label="First Fragment"
-        tools:layout="@layout/fragment_login" >
-
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
 
         <action
             android:id="@+id/login_to_register"
-            app:destination="@id/RegisterFragment" />
+            app:destination="@id/registerFragment" />
 
+<!--        <action-->
+<!--            android:id="@+id/action_loginFragment_to_scaffoldFragment"-->
+<!--            app:destination="@id/scaffoldFragment" />-->
 
+<!--        <action-->
+<!--            android:id="@+id/action_loginFragment_to_contactoFragment"-->
+<!--            app:destination="@id/contactoFragment" />-->
     </fragment>
-
 
     <fragment
-        android:id="@+id/RegisterFragment"
+        android:id="@+id/registerFragment"
         android:name="com.example.appjohn.fragments.RegisterFragment"
-        android:label="Second Fragment"
+        android:label="Registro"
         tools:layout="@layout/fragment_register">
+
         <action
             android:id="@+id/register_to_login"
-            app:destination="@id/LoginFragment" />
-
+            app:destination="@id/loginFragment" />
     </fragment>
+
+<!--    <fragment-->
+<!--        android:id="@+id/scaffoldFragment"-->
+<!--        android:name="com.example.appjohn.fragments.ScaffoldFragment"-->
+<!--        android:label="Principal"-->
+<!--        tools:layout="@layout/fragment_scaffold" />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/contactoFragment"-->
+<!--        android:name="com.example.appjohn.fragments.ContactoFragment"-->
+<!--        android:label="Contacto"-->
+<!--        tools:layout="@layout/fragment_contacto" />-->
 
 </navigation>
