@@ -5,12 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.appjohn.R
 import com.example.appjohn.databinding.FragmentLoginBinding
+import com.example.appjohn.viewmodels.LoginViewModel
 import com.google.android.material.snackbar.Snackbar
 
 class LoginFragment : Fragment() {
+
+    private val viewModel: LoginViewModel by viewModels()
 
     private var _binding: FragmentLoginBinding? = null
     // Esta propiedad solo es válida entre onCreateView y onDestroyView
@@ -28,26 +32,51 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //Necesario para que al usuario se le avise de los errores
+        setupObservers()
+
         setupClickListeners()
+    }
+
+    private fun setupObservers() {
+        // Observar errores de usuario
+        viewModel.userError.observe(viewLifecycleOwner) { error ->
+            binding.et1.error = error
+        }
+
+        // Observar errores de contraseña
+        viewModel.passwordError.observe(viewLifecycleOwner) { error ->
+            binding.et2.error = error
+        }
     }
 
     private fun setupClickListeners() {
         with(binding) {
             // Login principal
             button2.setOnClickListener {
-                if(et1.text!!.isEmpty() || et2.text!!.isEmpty()) {
-                    if(et1.text!!.isEmpty()) {
-                        et1.error = "Se debe introducir un nombre para iniciar sesión"
-                    }
-                    if(et2.text!!.isEmpty()) {
-                        et2.error = "Se debe introducir una contraseña para iniciar sesión"
-                    }
-                } else {
-                    // Para pruebas, navegar directamente al ScaffoldFragment
-                    findNavController().navigate(R.id.action_loginFragment_to_scaffoldFragment)
+//                if(et1.text!!.isEmpty() || et2.text!!.isEmpty()) {
+//                    if(et1.text!!.isEmpty()) {
+//                        et1.error = "Se debe introducir un nombre para iniciar sesión"
+//                    }
+//                    if(et2.text!!.isEmpty()) {
+//                        et2.error = "Se debe introducir una contraseña para iniciar sesión"
+//                    }
+//                } else {
+//                    // Para pruebas, navegar directamente al ScaffoldFragment
+//                    findNavController().navigate(R.id.action_loginFragment_to_scaffoldFragment)
+//
+//                    // También mostramos un mensaje de éxito
+//                    Snackbar.make(root, "Inicio de sesión exitoso (simulado)", Snackbar.LENGTH_SHORT).show()
+//                }
 
-                    // También mostramos un mensaje de éxito
-                    Snackbar.make(root, "Inicio de sesión exitoso (simulado)", Snackbar.LENGTH_SHORT).show()
+                // Usando el ViewModel para validar los campos
+                if (viewModel.validateLoginForm(
+                        et1.text.toString(),
+                        et2.text.toString()
+                    )
+                ) {
+                    // Navegar si es válido
+                    findNavController().navigate(R.id.action_loginFragment_to_scaffoldFragment)
                 }
             }
 
@@ -88,7 +117,7 @@ class LoginFragment : Fragment() {
             }
 
             // Registro (navegar a RegisterFragment)
-            button2.setOnClickListener {
+            textButton.setOnClickListener {
                 findNavController().navigate(R.id.login_to_register)
             }
 

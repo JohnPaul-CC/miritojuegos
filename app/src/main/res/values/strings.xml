@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">logIn</string>
+    <string name="app_name">Rito</string>
     <string name="user">Usuario</string>
     <string name="psw">Contraseña</string>
     <string name="login">Iniciar sesión</string>

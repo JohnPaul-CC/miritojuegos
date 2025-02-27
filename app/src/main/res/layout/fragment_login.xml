@@ -104,12 +104,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp">
 
-        <!-- For each button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/iconButton2"
             style="@style/Widget.Material3.Button.IconButton.Filled"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
             app:icon="@drawable/d7295b771c863e71c08bc0daea6c0498"
         />
         <com.google.android.material.button.MaterialButton
@@ -117,6 +117,7 @@
             style="@style/Widget.Material3.Button.IconButton.Filled"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:contentDescription="logInMeta"
             app:icon="@drawable/_90cf22777d30e344cf5d8abfdd79321"
             />
@@ -126,6 +127,7 @@
             style="@style/Widget.Material3.Button.IconButton.Filled"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
             android:contentDescription="logInApple"
             app:icon="@drawable/applelogo3"/>
     </LinearLayout>

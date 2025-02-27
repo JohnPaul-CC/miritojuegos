@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">logIn</string>
+    <string name="app_name">Rito</string>
     <string name="user">User</string>
     <string name="psw">Password</string>
     <string name="login">Log In</string>

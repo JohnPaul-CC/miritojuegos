@@ -15,7 +15,7 @@
         android:id="@+id/favoritosFragment"
         android:name="com.example.appjohn.fragments.FavoritosFragment"
         android:label="Favoritos"
-        tools:layout="@layout/fragment_contacto" />
+        tools:layout="@layout/fragment_favoritos" />
 
     <fragment
         android:id="@+id/contactoInternalFragment"

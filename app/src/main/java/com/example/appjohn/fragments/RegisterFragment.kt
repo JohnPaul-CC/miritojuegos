@@ -7,15 +7,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.appjohn.R
 import com.example.appjohn.databinding.FragmentRegisterBinding
+import com.example.appjohn.viewmodels.RegisterViewModel
 import com.google.android.material.snackbar.Snackbar
 
 class RegisterFragment : Fragment() {
 
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: RegisterViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,8 +33,32 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupObservers()
         setupDatePicker()
         setupClickListeners()
+    }
+
+    private fun setupObservers() {
+        // Observar errores de nombre
+        viewModel.nameError.observe(viewLifecycleOwner) { error ->
+            binding.et1.error = error
+        }
+
+        // Observar errores de email
+        viewModel.emailError.observe(viewLifecycleOwner) { error ->
+            binding.et2.error = error
+        }
+
+        // Observar errores de contraseña
+        viewModel.passwordError.observe(viewLifecycleOwner) { error ->
+            binding.et3.error = error
+        }
+
+        // Observar errores de fecha
+        viewModel.dateError.observe(viewLifecycleOwner)
+        { error ->
+            binding.et4.error = error
+        }
     }
 
     private fun setupDatePicker() {
@@ -78,7 +106,12 @@ class RegisterFragment : Fragment() {
 
             // Botón de registro principal
             button2.setOnClickListener {
-                if (validateFields()) {
+                if (viewModel.validateRegisterForm(
+                    et1.text.toString(),
+                    et2.text.toString(),
+                    et3.text.toString(),
+                    et4.text.toString()
+                )) {
                     // Si la validación es exitosa, navegar al LoginFragment
                     findNavController().navigate(R.id.register_to_login)
                 }
@@ -86,6 +119,7 @@ class RegisterFragment : Fragment() {
         }
     }
 
+    //Validacion sin ViewModel
     private fun validateFields(): Boolean {
         with(binding) {
 

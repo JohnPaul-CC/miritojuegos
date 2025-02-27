@@ -19,8 +19,8 @@
         app:layout_constraintHorizontal_bias="0.498" app:layout_constraintVertical_bias="0.079"/>
 
     <ImageView
-        android:layout_width="167dp"
-        android:layout_height="149dp"
+        android:layout_width="@dimen/iconoContacto"
+        android:layout_height="@dimen/iconoContacto"
         android:contentDescription="TODO"
         app:srcCompat="@drawable/phone" android:id="@+id/call"
         app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
@@ -28,20 +28,20 @@
         app:layout_constraintVertical_bias="0.215"/>
 
     <ImageView
-        android:layout_width="167dp"
-        android:layout_height="149dp" app:srcCompat="@drawable/mail" android:id="@+id/email"
+        android:layout_width="@dimen/iconoContacto"
+        android:layout_height="@dimen/iconoContacto" app:srcCompat="@drawable/mail" android:id="@+id/email"
         app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_bias="0.416"/>
     <ImageView
-        android:layout_width="167dp"
-        android:layout_height="149dp" app:srcCompat="@drawable/ubication" android:id="@+id/ubi"
+        android:layout_width="@dimen/iconoContacto"
+        android:layout_height="@dimen/iconoContacto" app:srcCompat="@drawable/ubication" android:id="@+id/ubi"
         app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_bias="0.617"/>
     <ImageView
-        android:layout_width="167dp"
-        android:layout_height="149dp" app:srcCompat="@drawable/watsap" android:id="@+id/wasap"
+        android:layout_width="@dimen/iconoContacto"
+        android:layout_height="@dimen/iconoContacto" app:srcCompat="@drawable/watsap" android:id="@+id/wasap"
         app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_bias="0.818"/>
