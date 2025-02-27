@@ -10,7 +10,7 @@ import com.example.appjohn.R
 import com.example.appjohn.databinding.FragmentLoginBinding
 import com.google.android.material.snackbar.Snackbar
 
-class   LoginFragment : Fragment() {
+class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
     // Esta propiedad solo es válida entre onCreateView y onDestroyView
@@ -37,49 +37,55 @@ class   LoginFragment : Fragment() {
             button2.setOnClickListener {
                 if(et1.text!!.isEmpty() || et2.text!!.isEmpty()) {
                     if(et1.text!!.isEmpty()) {
-                        et1.error = "Se debe introducir un nombre para registrase"
+                        et1.error = "Se debe introducir un nombre para iniciar sesión"
                     }
                     if(et2.text!!.isEmpty()) {
-                        et2.error = "Se debe introducir un email para registrase"
+                        et2.error = "Se debe introducir una contraseña para iniciar sesión"
                     }
                 } else {
-                    Snackbar.make(root, "Iniciando sesión", Snackbar.LENGTH_INDEFINITE)
-                        .setAction("Cerrar") {}
-                        .show()
-                    // Aquí irá la navegación al ScaffoldFragment cuando el login sea exitoso
-                    // findNavController().navigate(R.id.action_loginFragment_to_scaffoldFragment)
+                    // Para pruebas, navegar directamente al ScaffoldFragment
+                    findNavController().navigate(R.id.action_loginFragment_to_scaffoldFragment)
                 }
             }
 
             // Login con Google
             iconButton2.setOnClickListener {
-                Snackbar.make(root, "Iniciando sesión con Google", Snackbar.LENGTH_INDEFINITE)
+                Snackbar.make(root, "Iniciando sesión con Google", Snackbar.LENGTH_SHORT)
                     .setAction("Cerrar") {}
                     .show()
             }
 
             // Login con Apple
             iconButton3.setOnClickListener {
-                Snackbar.make(root, "Iniciando sesión con Apple", Snackbar.LENGTH_INDEFINITE)
+                Snackbar.make(root, "Iniciando sesión con Apple", Snackbar.LENGTH_SHORT)
                     .setAction("Cerrar") {}
                     .show()
             }
 
-            // Login con Meta (antes navegaba a ContactoActivity)
+            // Login con Meta
             iconButton.setOnClickListener {
-                findNavController().navigate(R.id.login_to_register)
+                Snackbar.make(root, "Iniciando sesión con Meta", Snackbar.LENGTH_SHORT)
+                    .setAction("Cerrar") {}
+                    .show()
             }
 
-            // Registro (antes navegaba a MainActivity2)
+            // Registro (navegar a RegisterFragment)
             registerButton.setOnClickListener {
                 findNavController().navigate(R.id.login_to_register)
             }
 
             // Olvidó contraseña
             forgotButton.setOnClickListener {
-                Snackbar.make(root, "Olvidaste tu contraseña?", Snackbar.LENGTH_INDEFINITE)
+                Snackbar.make(root, "Recuperar contraseña", Snackbar.LENGTH_SHORT)
                     .setAction("Cerrar") {}
                     .show()
+            }
+
+            // Botón temporal para probar la navegación a ContactoFragment
+            val tempButton = button2
+            tempButton.setOnLongClickListener {
+                findNavController().navigate(R.id.action_loginFragment_to_contactoFragment)
+                true
             }
         }
     }
