@@ -10,5 +10,8 @@
     <string name="date">Día/Mes/Año</string>
     <string name="or">O inicia con:</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Strings adicionales para agregar a strings.xml -->
+    <string name="navigation_drawer_open">Abrir menú de navegación</string>
+    <string name="navigation_drawer_close">Cerrar menú de navegación</string>
+    <string name="hello_blank_fragment">HolaaMundo\n</string>
 </resources>

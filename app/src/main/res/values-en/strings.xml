@@ -10,4 +10,8 @@
     <string name="or">Or log in with:</string>
     <string name="email">Email</string>
     <string name="date">Day/Month/Year</string>
+    <!-- Strings adicionales para agregar a strings.xml -->
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
+    <string name="hello_blank_fragment">HolaaMundo\n</string>
 </resources>
