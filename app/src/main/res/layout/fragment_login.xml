@@ -66,6 +66,8 @@
         android:layout_height="wrap_content"
         android:text="@string/forgot"
         android:textColor="#989898"
+        android:textSize="11dp"
+
         app:layout_constraintTop_toBottomOf="@id/tf2"
         app:layout_constraintEnd_toEndOf="@id/tf2"/>
 
@@ -102,29 +104,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp">
 
-        <Button
+        <!-- For each button -->
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/iconButton2"
-            style="?attr/materialIconButtonFilledStyle"
+            style="@style/Widget.Material3.Button.IconButton.Filled"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:contentDescription="logInGoogle"
-            app:icon="@drawable/d7295b771c863e71c08bc0daea6c0498"/>
-
-        <Button
+            app:icon="@drawable/d7295b771c863e71c08bc0daea6c0498"
+        />
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/iconButton"
-            style="?attr/materialIconButtonFilledStyle"
+            style="@style/Widget.Material3.Button.IconButton.Filled"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="logInMeta"
-            app:icon="@drawable/_90cf22777d30e344cf5d8abfdd79321"/>
+            app:icon="@drawable/_90cf22777d30e344cf5d8abfdd79321"
+            />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/iconButton3"
-            style="?attr/materialIconButtonFilledStyle"
+            style="@style/Widget.Material3.Button.IconButton.Filled"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
             android:contentDescription="logInApple"
             app:icon="@drawable/applelogo3"/>
     </LinearLayout>
@@ -144,15 +145,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/newUser"
+            android:textSize="13dp"
+
             android:textColor="#888888"/>
 
         <Button
-            android:id="@+id/registerButton"
+            android:id="@+id/textButton"
             style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/signup"
-            android:textColor="#2D56A9"/>
+            android:textColor="#2D56A9"
+            android:textSize="13dp"
+            />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

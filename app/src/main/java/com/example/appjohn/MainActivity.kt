@@ -2,25 +2,21 @@ package com.example.appjohn
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.setupActionBarWithNavController
-import com.example.appjohn.databinding.ActivityMainBinding
+import androidx.navigation.fragment.NavHostFragment
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_main)
 
-        // Configurar NavController después de que se carga el layout
-        val navController = findNavController(R.id.nav_host_fragment)
-        setupActionBarWithNavController(navController)
+        // No necesitamos hacer nada más aquí, el NavHostFragment se encargará
+        // de mostrar el fragmento inicial definido en nav_graph.xml
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }

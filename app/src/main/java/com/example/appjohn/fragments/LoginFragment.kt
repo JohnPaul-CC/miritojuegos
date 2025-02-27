@@ -45,38 +45,56 @@ class LoginFragment : Fragment() {
                 } else {
                     // Para pruebas, navegar directamente al ScaffoldFragment
                     findNavController().navigate(R.id.action_loginFragment_to_scaffoldFragment)
+
+                    // También mostramos un mensaje de éxito
+                    Snackbar.make(root, "Inicio de sesión exitoso (simulado)", Snackbar.LENGTH_SHORT).show()
                 }
             }
 
             // Login con Google
             iconButton2.setOnClickListener {
-                Snackbar.make(root, "Iniciando sesión con Google", Snackbar.LENGTH_SHORT)
+                Snackbar.make(root, "Iniciando sesión con Google (simulado)", Snackbar.LENGTH_SHORT)
                     .setAction("Cerrar") {}
                     .show()
+
+                // Para pruebas, navegar al ScaffoldFragment después de un breve retraso
+                root.postDelayed({
+                    findNavController().navigate(R.id.action_loginFragment_to_scaffoldFragment)
+                }, 1500)
             }
 
             // Login con Apple
             iconButton3.setOnClickListener {
-                Snackbar.make(root, "Iniciando sesión con Apple", Snackbar.LENGTH_SHORT)
+                Snackbar.make(root, "Iniciando sesión con Apple (simulado)", Snackbar.LENGTH_SHORT)
                     .setAction("Cerrar") {}
                     .show()
+
+                // Para pruebas, navegar al ScaffoldFragment después de un breve retraso
+                root.postDelayed({
+                    findNavController().navigate(R.id.action_loginFragment_to_scaffoldFragment)
+                }, 1500)
             }
 
             // Login con Meta
             iconButton.setOnClickListener {
-                Snackbar.make(root, "Iniciando sesión con Meta", Snackbar.LENGTH_SHORT)
+                Snackbar.make(root, "Iniciando sesión con Meta (simulado)", Snackbar.LENGTH_SHORT)
                     .setAction("Cerrar") {}
                     .show()
+
+                // Para pruebas, navegar al ScaffoldFragment después de un breve retraso
+                root.postDelayed({
+                    findNavController().navigate(R.id.action_loginFragment_to_scaffoldFragment)
+                }, 1500)
             }
 
             // Registro (navegar a RegisterFragment)
-            registerButton.setOnClickListener {
+            button2.setOnClickListener {
                 findNavController().navigate(R.id.login_to_register)
             }
 
             // Olvidó contraseña
             forgotButton.setOnClickListener {
-                Snackbar.make(root, "Recuperar contraseña", Snackbar.LENGTH_SHORT)
+                Snackbar.make(root, "Recuperar contraseña (simulado)", Snackbar.LENGTH_SHORT)
                     .setAction("Cerrar") {}
                     .show()
             }
