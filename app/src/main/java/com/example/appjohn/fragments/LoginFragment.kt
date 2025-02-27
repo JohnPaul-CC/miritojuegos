@@ -10,7 +10,7 @@ import com.example.appjohn.R
 import com.example.appjohn.databinding.FragmentLoginBinding
 import com.google.android.material.snackbar.Snackbar
 
-class LoginFragment : Fragment() {
+class   LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
     // Esta propiedad solo es válida entre onCreateView y onDestroyView

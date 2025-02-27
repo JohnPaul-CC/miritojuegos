@@ -107,7 +107,7 @@
             style="?attr/materialIconButtonFilledStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
             android:contentDescription="logInGoogle"
             app:icon="@drawable/d7295b771c863e71c08bc0daea6c0498"/>
 

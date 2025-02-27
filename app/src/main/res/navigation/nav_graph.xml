@@ -14,13 +14,13 @@
             android:id="@+id/login_to_register"
             app:destination="@id/registerFragment" />
 
-<!--        <action-->
-<!--            android:id="@+id/action_loginFragment_to_scaffoldFragment"-->
-<!--            app:destination="@id/scaffoldFragment" />-->
+        <action
+            android:id="@+id/action_loginFragment_to_scaffoldFragment"
+            app:destination="@id/scaffoldFragment" />
 
-<!--        <action-->
-<!--            android:id="@+id/action_loginFragment_to_contactoFragment"-->
-<!--            app:destination="@id/contactoFragment" />-->
+        <action
+            android:id="@+id/action_loginFragment_to_contactoFragment"
+            app:destination="@id/contactoFragment" />
     </fragment>
 
     <fragment
@@ -34,16 +34,16 @@
             app:destination="@id/loginFragment" />
     </fragment>
 
-<!--    <fragment-->
-<!--        android:id="@+id/scaffoldFragment"-->
-<!--        android:name="com.example.appjohn.fragments.ScaffoldFragment"-->
-<!--        android:label="Principal"-->
-<!--        tools:layout="@layout/fragment_scaffold" />-->
+    <fragment
+        android:id="@+id/scaffoldFragment"
+        android:name="com.example.appjohn.fragments.ScaffoldFragment"
+        android:label="Principal"
+        tools:layout="@layout/fragment_scaffold" />
 
-<!--    <fragment-->
-<!--        android:id="@+id/contactoFragment"-->
-<!--        android:name="com.example.appjohn.fragments.ContactoFragment"-->
-<!--        android:label="Contacto"-->
-<!--        tools:layout="@layout/fragment_contacto" />-->
+    <fragment
+        android:id="@+id/contactoFragment"
+        android:name="com.example.appjohn.fragments.ContactoFragment"
+        android:label="Contacto"
+        tools:layout="@layout/fragment_contacto" />
 
 </navigation>

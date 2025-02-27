@@ -88,6 +88,7 @@ class RegisterFragment : Fragment() {
 
     private fun validateFields(): Boolean {
         with(binding) {
+
             var isValid = true
 
             if (et4.text!!.isEmpty()) {
