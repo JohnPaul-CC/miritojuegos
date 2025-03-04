@@ -49,23 +49,26 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.googleid)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation(platform("com.google.firebase:firebase-bom:33.8.0"))
         // Navigation Component
-        implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
-        implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
 
-        // Firebase Authentication
-        implementation ("com.google.firebase:firebase-auth-ktx")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
 
-        // Firebase Firestore
-        implementation ("com.google.firebase:firebase-firestore-ktx")
+    // Firebase Authentication
+    implementation ("com.google.firebase:firebase-auth-ktx")
 
-        // Firebase Google Auth
-        implementation ("com.google.android.gms:play-services-auth:20.7.0")
+    // Firebase Firestore
+    implementation ("com.google.firebase:firebase-firestore-ktx")
 
+    // Firebase Google Auth
+    implementation ("com.google.android.gms:play-services-auth:20.7.0")
 
+    // SwipeRefresh
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01")
     }

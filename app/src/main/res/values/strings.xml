@@ -14,4 +14,9 @@
     <string name="navigation_drawer_open">Abrir menú de navegación</string>
     <string name="navigation_drawer_close">Cerrar menú de navegación</string>
     <string name="hello_blank_fragment">HolaaMundo\n</string>
+
+    <string name="web_client_id">958572653746-45orh3vrdd8nh8tee4ubvso9c7bkjnp0.apps.googleusercontent.com</string>
+<!--    <string name="web_client_id">40690879576-a7mtqkucu3mkje6k498880u32h5311vg.apps.googleusercontent.com</string>-->
+
+
 </resources>
