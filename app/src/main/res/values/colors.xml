@@ -5,7 +5,7 @@
     <color name="riotRed">#EA0029</color>
     <color name="colorPrimary">#E31937</color>
     <color name="colorPrimaryDark">#B3142C</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorAccent">#EA0029</color>
     <!--    <color name="m3_comp_button_filled_icon_color" tools:ignore="PrivateResource">#4CAF50</color>-->
 <!--    <color name="m3_filled_icon_button_container_color_selector" tools:ignore="PrivateResource">#E90029</color>-->
 </resources>

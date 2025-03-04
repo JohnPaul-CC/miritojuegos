@@ -1,4 +1,4 @@
-package com.example.appjohn
+package com.example.appjohn.clases
 
 data class Usuario(
 //    val id: String = "", // Podrías usar el UID de Firebase Auth

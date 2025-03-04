@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.credentials.CredentialManager
 import androidx.credentials.GetCredentialRequest
@@ -16,22 +15,18 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.appjohn.R
-import com.example.appjohn.Usuario
+import com.example.appjohn.clases.Usuario
 import com.example.appjohn.databinding.FragmentRegisterBinding
 import com.example.appjohn.viewmodels.RegisterViewModel
 import com.google.android.libraries.identity.googleid.GetGoogleIdOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.google.android.material.snackbar.Snackbar
-import com.google.api.Context
-import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
@@ -56,12 +51,20 @@ class RegisterFragment : Fragment() {
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         setupObservers()
         setupDatePicker()
         setupClickListeners()
+
+
+        Glide
+            .with(binding.root)
+            .load(R.drawable.profileicon)
+            .placeholder(R.drawable.profileicon)
+            .into(binding.imagenGlide);
     }
 
     private fun setupObservers() {
@@ -143,30 +146,81 @@ class RegisterFragment : Fragment() {
                     et4.text.toString()
                 )) {
                     // Si la validación es exitosa, navegar al LoginFragment
+                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(et2.text.toString(), et3.text.toString())
+                        .addOnCompleteListener() {
+                            if (it.isSuccessful) {
+                                // Sign in success, update UI with the signed-in user's information
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Authentication succeded.",
+                                    Toast.LENGTH_SHORT,
+                                ).show()
 
-                    auth
-                        .createUserWithEmailAndPassword(et1.text.toString(), et2.text.toString())
-                        .addOnSuccessListener {
-
-                            val intent = Intent(requireContext(), LoginFragment::class.java)
-                            startActivity(intent)
-                            Toast.makeText(requireContext(), "createUserWithEmail:success", Toast.LENGTH_SHORT).show()
-
+                                val nuevoUser = Usuario(et1.text.toString(), et3.text.toString())
+                                addUsuario(nuevoUser)
+                                findNavController().navigate(R.id.register_to_login)
+//                                val user = auth.currentUser
+//                                updateUI(user)
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Authentication failed.",
+                                    Toast.LENGTH_SHORT,
+                                ).show()
+//                                updateUI(null)
+                            }
                         }
-                        .addOnFailureListener{
-
-                            Toast.makeText(
-                                requireContext(),
-                                "Authentication failed.",
-                                Toast.LENGTH_SHORT,
-                            ).show()
-                        }
 
 
+//                    auth.createUserWithEmailAndPassword(et2.text.toString(), et3.text.toString())
+//                        .addOnCompleteListener() { task ->
+//                            if (task.isSuccessful) {
+//
+//                                // Sign in success, update UI with the signed-in user's information
+//                                Toast.makeText(
+//                                    requireContext(),
+//                                    "Authentication succeded.",
+//                                    Toast.LENGTH_SHORT,
+//                                ).show()
+//
+//
+////                                val user = auth.currentUser
+////                                updateUI(user)
+//                            } else {
+//                                // If sign in fails, display a message to the user.
+//                                Toast.makeText(
+//                                    requireContext(),
+//                                    "Authentication failed.",
+//                                    Toast.LENGTH_SHORT,
+//                                ).show()
+////                                updateUI(null)
+//                            }
+//                        }
 
-                    val nuevoUser = Usuario(et1.text.toString(), et3.text.toString())
-                    addUsuario(nuevoUser)
-                    findNavController().navigate(R.id.register_to_login)
+
+//                    auth
+//                        .createUserWithEmailAndPassword(et1.text.toString(), et2.text.toString())
+//                        .addOnSuccessListener {
+//
+//                            val intent = Intent(requireContext(), LoginFragment::class.java)
+//                            startActivity(intent)
+//                            Toast.makeText(requireContext(), "createUserWithEmail:success", Toast.LENGTH_SHORT).show()
+//
+//                        }
+//                        .addOnFailureListener{
+//
+//                            Toast.makeText(
+//                                requireContext(),
+//                                "Authentication failed.",
+//                                Toast.LENGTH_SHORT,
+//                            ).show()
+//                        }
+
+
+
+
+
                 }
             }
         }
@@ -270,56 +324,7 @@ class RegisterFragment : Fragment() {
         }
     }
 
-//    private suspend fun cargarUsuarios() {
-//        //Cargamos los datos de la BBDD
-//        FirebaseApp.initializeApp(requireContext())
-//        val db = Firebase.firestore
-//
-//        Usuarios.clear()
-//
-//        withContext(Dispatchers.Main)
-//        {
-//            //Ocultar el RecyclerView
-//            binding.rvPeliculas.visibility = View.GONE
-//            // Leer películas desde firebase
-//            binding.progressBar.visibility = ProgressBar.VISIBLE
-//        }
-//
-//        db.collection("Usuarios")
-//            .get()
-//            .addOnSuccessListener{
-//
-//                    result ->
-//
-//                for(document in result)
-//                {
-//                    val fav = document.get("fav") as Boolean
-//                    val pelicula = Pelicula(document.id.toInt(),
-//                        0,
-//                        document.get("nombre") as String,
-//                        document.get("descripcion") as String,
-//                        fav)
-//
-//                    movies.add(pelicula)
-//                }
-//            }
-//            .addOnFailureListener{
-//
-//            }
-//
-//        for (i in 1..100) {
-//            delay(50) // Simula una tarea larga
-//            binding.progressBar.progress = i
-//        }
-//
-//        withContext(Dispatchers.Main)
-//        {
-//            binding.progressBar.visibility = ProgressBar.GONE
-//            //Mostrar el RecyclerView
-//            binding.rvPeliculas.visibility = View.VISIBLE
-//        }
-//
-//    }
+
 
     fun addUsuario(nuevoUsuario : Usuario) {
         val db = FirebaseFirestore.getInstance()

@@ -14,6 +14,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.appjohn.R
+import com.example.appjohn.clases.Usuario
 import com.example.appjohn.databinding.FragmentLoginBinding
 import com.example.appjohn.viewmodels.LoginViewModel
 import com.google.android.libraries.identity.googleid.GetGoogleIdOption
@@ -95,27 +96,51 @@ class LoginFragment : Fragment() {
                         et2.text.toString()
                     )
                 ) {
-                    auth
-                        .signInWithEmailAndPassword(et1.text.toString(), et2.text.toString())
-                        .addOnSuccessListener {
+//                    auth
+//                        .signInWithEmailAndPassword(et1.text.toString(), et2.text.toString())
+//                        .addOnSuccessListener {
+//
+//                            val intent = Intent(requireContext(), LoginFragment::class.java)
+//                            startActivity(intent)
+//
+//                        }
+//                        .addOnFailureListener{
+//
+//                            Toast.makeText(requireContext(), "Error en el login", Toast.LENGTH_SHORT).show()
+//
+//                        }
+                    FirebaseAuth.getInstance().signInWithEmailAndPassword(et1.text.toString(), et2.text.toString())
+                        .addOnCompleteListener() {
+                            if (it.isSuccessful) {
+                                // Sign in success, update UI with the signed-in user's information
+                                Toast.makeText(
+                                    requireContext(),
+                                    "LogIn Authentication succeded.",
+                                    Toast.LENGTH_SHORT,
+                                ).show()
 
-                            val intent = Intent(requireContext(), LoginFragment::class.java)
-                            startActivity(intent)
-
-                        }
-                        .addOnFailureListener{
-
-                            Toast.makeText(requireContext(), "Error en el login", Toast.LENGTH_SHORT).show()
-
+                                findNavController().navigate(R.id.action_loginFragment_to_scaffoldFragment)
+//                                val user = auth.currentUser
+//                                updateUI(user)
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Toast.makeText(
+                                    requireContext(),
+                                    "LogIn Authentication failed.",
+                                    Toast.LENGTH_SHORT,
+                                ).show()
+//                                updateUI(null)
+                            }
                         }
 
                     // Navegar si es válido
-                    findNavController().navigate(R.id.action_loginFragment_to_scaffoldFragment)
+//                    findNavController().navigate(R.id.action_loginFragment_to_scaffoldFragment)
                 }
             }
 
             // Login con Google
             iconButton2.setOnClickListener {
+                signInWithGoogle()
                 Snackbar.make(root, "Iniciando sesión con Google (simulado)", Snackbar.LENGTH_SHORT)
                     .setAction("Cerrar") {}
                     .show()
@@ -168,6 +193,7 @@ class LoginFragment : Fragment() {
                 findNavController().navigate(R.id.action_loginFragment_to_contactoFragment)
                 true
             }
+
         }
     }
 
@@ -184,8 +210,10 @@ class LoginFragment : Fragment() {
         val hashedNonce : String = digest.fold(""){str, it -> str + "%02x".format(it)}*/
 
         val googleIdOption: GetGoogleIdOption = GetGoogleIdOption.Builder()
-            .setFilterByAuthorizedAccounts(true)
-            .setServerClientId(getString(R.string.web_client_id))
+            .setFilterByAuthorizedAccounts(false)
+//            .setServerClientId(getString(R.string.web_client_id))
+            .setServerClientId(getString(R.string.default_web_client_id))
+
             //.setNonce(hashedNonce)
             //.setAutoSelectEnabled(false)
             .build()

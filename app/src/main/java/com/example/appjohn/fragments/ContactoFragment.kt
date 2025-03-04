@@ -60,31 +60,50 @@ class ContactoFragment : Fragment() {
         }
     }
 
+//    private fun makePhoneCall() {
+//        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+//            // Si tenemos permiso, realizar la llamada
+//            val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:99999999999"))
+//            try {
+//                startActivity(intent)
+//            } catch (ex: ActivityNotFoundException) {
+//                Snackbar.make(binding.root, "No se pudo realizar la llamada", Snackbar.LENGTH_LONG).show()
+//            }
+//        } else {
+//            // Si no tenemos permiso, solicitarlo
+//            if (ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(), Manifest.permission.CALL_PHONE)) {
+//                // El usuario rechazó el permiso anteriormente, explicar por qué lo necesitamos
+//                Snackbar.make(binding.root, "Para llamar directamente necesitas conceder el permiso en ajustes", Snackbar.LENGTH_LONG).show()
+//            } else {
+//                // Solicitar el permiso
+//                requestPermissions(
+//                    arrayOf(Manifest.permission.CALL_PHONE),
+//                    CALL_PHONE_PERMISSION_REQUEST
+//                )
+//            }
+//        }
+//    }
     private fun makePhoneCall() {
-        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
-            // Si tenemos permiso, realizar la llamada
-            val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:99999999999"))
-            try {
+
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED){
+            val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:999999999"))
+
+            try{
                 startActivity(intent)
-            } catch (ex: ActivityNotFoundException) {
-                Snackbar.make(binding.root, "No se pudo realizar la llamada", Snackbar.LENGTH_LONG).show()
+            }catch (ex: ActivityNotFoundException){
+                Snackbar.make(binding.root, "No se pudo llamar ", Snackbar.LENGTH_LONG).show()
             }
+
         } else {
-            // Si no tenemos permiso, solicitarlo
-            if (ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(), Manifest.permission.CALL_PHONE)) {
-                // El usuario rechazó el permiso anteriormente, explicar por qué lo necesitamos
-                Snackbar.make(binding.root, "Para llamar directamente necesitas conceder el permiso en ajustes", Snackbar.LENGTH_LONG).show()
+            if(ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(), Manifest.permission.CALL_PHONE)){
+                Snackbar.make(binding.root, "No tienes los permisos necesarios, activalo en ajustes ", Snackbar.LENGTH_LONG).show()
             } else {
-                // Solicitar el permiso
-                requestPermissions(
-                    arrayOf(Manifest.permission.CALL_PHONE),
-                    CALL_PHONE_PERMISSION_REQUEST
-                )
+                ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.CALL_PHONE),CALL_PHONE_PERMISSION_REQUEST)
             }
         }
     }
 
-    private fun sendEmail() {
+        private fun sendEmail() {
         val intent = Intent(Intent.ACTION_SENDTO).apply {
             data = Uri.parse("mailto:") // Solo aplicaciones de email responderán
             putExtra(Intent.EXTRA_EMAIL, arrayOf("support@riotgames.com"))

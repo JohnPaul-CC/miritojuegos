@@ -5,15 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import com.bumptech.glide.Glide
 import com.example.appjohn.R
 import com.example.appjohn.databinding.FragmentScaffoldBinding
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 
 class ScaffoldFragment : Fragment() {
 
@@ -26,6 +29,8 @@ class ScaffoldFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+
+
     ): View {
         _binding = FragmentScaffoldBinding.inflate(inflater, container, false)
         return binding.root
@@ -37,6 +42,12 @@ class ScaffoldFragment : Fragment() {
         setupToolbar()
 
         setupNavigation()
+
+//        db
+//            .with(binding.navigationView)
+//            .placeholder(R.drawable.profileicon)
+//            .into(binding.nav_header_user_name);
+
     }
 
     private fun setupToolbar() {
@@ -69,11 +80,6 @@ class ScaffoldFragment : Fragment() {
             R.string.navigation_drawer_close
         )
 
-        // Configurar los destinos de nivel superior (sin mostrar flecha de retroceso)
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.listaFragment, R.id.favoritosFragment, R.id.contactoInternalFragment),
-            binding.drawerLayout
-        )
 
         binding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
@@ -88,6 +94,10 @@ class ScaffoldFragment : Fragment() {
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.logout -> {
+                    // Log out firebase
+                    FirebaseAuth.getInstance().signOut()
+                    Toast.makeText(requireContext(), "Cerraste sesión", Toast.LENGTH_SHORT).show()
+
                     // Navegar de vuelta al login
                     requireActivity().supportFragmentManager.findFragmentById(R.id.nav_host_fragment)?.let {
                         val mainNavController = androidx.navigation.Navigation.findNavController(it.requireView())

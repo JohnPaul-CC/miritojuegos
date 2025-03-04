@@ -2,9 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-<!--    <uses-feature-->
-<!--        android:name="android.hardware.telephony"-->
-<!--        android:required="false" />-->
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -27,7 +27,7 @@
         </activity>
     </application>
     <!-- Permiso peligroso para realizar llamadas telefónicas -->
-<!--    <uses-permission android:name="android.permission.CALL_PHONE" />-->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <!-- Otros permisos -->
     <uses-permission android:name="android.permission.INTERNET" />
